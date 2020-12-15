@@ -48,3 +48,22 @@ for seasondir in ['season0']:
     with open(flatpostseasonfile, 'w') as f:
         json.dump(flat_postseason, f, indent=4)
 
+
+    ################################################
+
+
+    seedfile = os.path.join(seasondir, 'seed.json')
+    flatseedfile = os.path.join(seasondir, 'flatseed.json')
+
+    with open(seedfile, 'r') as f:
+        seed = json.load(f)
+
+    flat_seed = []
+    for league_name, seed_list in seed.items():
+        d = {}
+        d['league'] = league_name
+        d['seed_list'] = seed_list
+        flat_seed.append(d)
+
+    with open(flatseedfile, 'w') as f:
+        json.dump(flat_seed, f, indent=4)
